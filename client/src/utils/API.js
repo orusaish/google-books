@@ -2,9 +2,11 @@ import axios from "axios";
 
 export default {
   getBooks: () => {
+    console.log("searching title 1");
     return axios.get("/api/books");
   },
   searchBooks: title => {
+    console.log("searching title");
     return axios.post("/search", { title: title });
   },
   addBookToDB: bookData => {
