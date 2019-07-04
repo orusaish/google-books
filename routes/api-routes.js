@@ -15,7 +15,13 @@ module.exports = function(app) {
   });
 
   app.post("/search", (req, res) => {
+    console.log("hello");
     let bookTitle = req.body.title.replace(/\s/g, "+");
+    let URL =
+      "https://www.googleapis.com/books/v1/volumes?q=" +
+      "harrypotter" +
+      "AIzaSyDDz5AQqNZIFUOqKPiTIwjltPdGqBt8Qqw";
+    console.log(URL);
     axios
       .get(
         `https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&key=${
@@ -26,7 +32,7 @@ module.exports = function(app) {
         res.json(response.data.items);
       })
       .catch(err => {
-        res.json({ error: error });
+        res.json({ error: err });
       });
   });
 
